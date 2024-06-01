@@ -1,0 +1,35 @@
+:root {
+    --color-primary: #F0E0F4;
+    --color-grey: #7e7e7e;
+    --color-light-grey: #b3b3b3;
+}
+
+.bg-primary {
+    background: var(--color-primary);
+}
+
+.border-primary {
+    border-color: var(--color-primary);
+}
+
+.color-grey {
+    color: var(--color-grey);
+}
+
+.color-light-grey {
+    color: var(--color-light-grey);
+}
+
+.grid-adaptive {
+    grid-template-columns: repeat(auto-fill, minmax(512px, 1fr));
+}
+
+input {
+    outline: none;
+}
+
+input[type=submit],
+input[type=button],
+button {
+    cursor: pointer;
+}
