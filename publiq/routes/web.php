@@ -12,6 +12,7 @@ Route::get('/profile', function () {
 })->middleware(['auth', 'verified'])->name('profile');
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::post('/edit_profile', [ProfileController::class, 'edit_user'])->name('EditUser')->middleware(['auth']);
 Route::get('/new_story', [StoryController::class, 'open_new_story'])->name('OpenNewStory')->middleware(['auth']);
 Route::post('/new_story', [StoryController::class, 'new_story'])->name('NewStory')->middleware(['auth']);
 Route::get('/verification_list', [AdminController::class, 'verification_list'])->name('VerifList')->middleware([IsAdmin::class]);
