@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\IsAdmin;
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/catalog', [HomeController::class, 'catalog'])->name('Catalog');
 
 Route::get('/profile', [ProfileController::class, 'profile'])->name('Profile')->middleware(['auth']);
 Route::post('/profile/edit', [ProfileController::class, 'edit_user'])->name('EditUser')->middleware(['auth']);

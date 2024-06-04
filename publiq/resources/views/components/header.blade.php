@@ -10,7 +10,7 @@
         <nav>
             <ul class="flex text-2xl wrap">
                 <li><a href="{{ route('OpenNewStory') }}">Добавить публикацию</a></li>
-                <li><a class="ml-10" href="#!">Каталог</a></li>
+                <li><a class="ml-10" href="{{ route('Catalog') }}">Каталог</a></li>
                 @if (Auth::user() and Auth::user()->is_admin == 1)
                     <li><a class="ml-10" href="{{ route('VerifList') }}">Админка</a></li>
                 @endif

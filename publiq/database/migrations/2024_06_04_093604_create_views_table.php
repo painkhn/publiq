@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('views', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('story_id');
+            $table->foreign('story_id')->references('id')->on('stories')->onDelete('cascade');
             $table->timestamps();
         });
     }

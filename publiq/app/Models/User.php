@@ -49,4 +49,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Story::class);
     }
+    public function views() {
+        return $this->hasMany(View::class);
+    }
 }

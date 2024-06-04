@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Story;
+use App\Models\View;
 use Auth;
 
 class StoryController extends Controller
@@ -29,6 +30,13 @@ class StoryController extends Controller
     public function show_story($id) 
     {
         $story = Story::with('user')->where('id', $id)->first();
+        $views = View::where('user_id', Auth::user()->id)->where('story_id', $id)->first();
+        if (!$views) {
+            View::create([
+                'user_id' => Auth::user()->id,
+                'story_id' => $id
+            ]);
+        }
         return view('story', ['story' => $story]);
     }
     public function editor_story($id)

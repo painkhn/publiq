@@ -7,60 +7,25 @@
                 <h2>Самые просматриваемые публикацию</h2>
             </div>
             <ul class="grid grid-adaptive">
-                <li>
-                    <div class="max-w-lg">
-                        <div
-                            class="public-block w-full h-64 border-4 border-primary rounded-md text-center px-5 py-8 color-grey mb-2">
-                            <div class="public-title text-xl mb-5">
-                                <h3>Название истории</h3>
+                @foreach ($populars->reverse() as $popular)
+                    <li>
+                        <div class="max-w-lg">
+                            <div
+                                class="public-block w-full h-64 border-4 border-primary rounded-md text-center px-5 py-8 color-grey mb-2">
+                                <div class="public-title text-xl mb-5">
+                                    <h3>{{ $popular->name }}</h3>
+                                </div>
+                                <div class="public-content">
+                                    <p>{{ $popular->description }}</p>
+                                </div>
                             </div>
-                            <div class="public-content">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus atque repellendus culpa
-                                    odit incidunt natus error illo maxime, quae beatae temporibus ipsum, doloribus
-                                    consequuntur tempore distinctio similique suscipit nam. Ex?</p>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <a class="color-light-grey text-xl" href="#!">Читать</a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="max-w-lg">
-                        <div
-                            class="public-block w-full h-64 border-4 border-primary rounded-md text-center px-5 py-8 color-grey">
-                            <div class="public-title text-xl mb-5">
-                                <h3>Название истории</h3>
-                            </div>
-                            <div class="public-content">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus atque repellendus culpa
-                                    odit incidunt natus error illo maxime, quae beatae temporibus ipsum, doloribus
-                                    consequuntur tempore distinctio similique suscipit nam. Ex?</p>
+                            <div class="text-right">
+                                <a class="color-light-grey text-xl"
+                                    href="{{ route('Story', ['id' => $popular->id]) }}">Читать</a>
                             </div>
                         </div>
-                        <div class="text-right">
-                            <a class="color-light-grey text-xl" href="#!">Читать</a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="max-w-lg">
-                        <div
-                            class="public-block w-full h-64 border-4 border-primary rounded-md text-center px-5 py-8 color-grey">
-                            <div class="public-title text-xl mb-5">
-                                <h3>Название истории</h3>
-                            </div>
-                            <div class="public-content">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus atque repellendus culpa
-                                    odit incidunt natus error illo maxime, quae beatae temporibus ipsum, doloribus
-                                    consequuntur tempore distinctio similique suscipit nam. Ex?</p>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <a class="color-light-grey text-xl" href="#!">Читать</a>
-                        </div>
-                    </div>
-                </li>
+                    </li>
+                @endforeach
             </ul>
         </div>
         <div class="public w-full mb-20">

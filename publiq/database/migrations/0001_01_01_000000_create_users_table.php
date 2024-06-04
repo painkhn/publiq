@@ -22,7 +22,7 @@ return new class extends Migration
             $table->timestamps();
         });
         DB::table('users')->insert([
-            ['name' => 'admin', 'email' => 'admin@mail.ru', 'is_admin' => true, 'password' =>  Hash::make('admin')],
+            ['name' => 'admin', 'email' => 'admin@mail.ru', 'is_admin' => true, 'password' =>  Hash::make('123123123')],
         ]);
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
