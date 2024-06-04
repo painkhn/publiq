@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+    Редактирование публикации
+@endsection
 
 @section('content')
     <form method="POST" action="{{ route('EditStory', ['id' => $story->id]) }}">

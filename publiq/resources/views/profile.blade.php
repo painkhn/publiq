@@ -1,4 +1,8 @@
 @extends('layouts.app')
+@section('title')
+    Профиль
+@endsection
+
 
 @section('content')
     <div class="h-main">

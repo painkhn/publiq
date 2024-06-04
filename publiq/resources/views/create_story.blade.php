@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+    Добавление публикации
+@endsection
 
 @section('content')
     <form method="POST" action="{{ route('NewStory') }}">

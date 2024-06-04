@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+    Публикация
+@endsection
 
 @section('content')
     <div class="max-w-lg h-auto mx-auto my-0 mb-20 py-20">

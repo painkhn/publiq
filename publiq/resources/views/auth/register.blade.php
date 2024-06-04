@@ -1,4 +1,7 @@
 @extends('layouts.auth')
+@section('title')
+    Регистрация
+@endsection
 
 @section('content')
     <div class="w-full h-screen flex items-center justify-center">

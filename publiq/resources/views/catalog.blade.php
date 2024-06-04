@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+    Католог
+@endsection
 
 @section('content')
     <div class="h-main px-28 py-20">

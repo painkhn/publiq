@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+    Главная
+@endsection
 
 @section('content')
     <div class="px-28 py-20">

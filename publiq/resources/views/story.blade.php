@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+    {{ $story->name }}
+@endsection
 
 @section('content')
     <div class="py-20 mx-auto max-w-7xl h-main">
