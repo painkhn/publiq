@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="h-main">
-        <div class="flex justify-between px-28">
+        <div class="flex justify-between px-28 py-20">
             <div class="profile-edit w-1/3 pr-28">
                 <form method="POST" action="{{ route('EditUser') }}">
                     @csrf
@@ -32,14 +32,15 @@
                     <p>Ваши публикации</p>
                 </div>
                 <ul class="grid grid-cols-2">
-                    <li class="max-w-md mb-10">
-                        <a href="#!"
-                            class="w-full border-2 h-14 border-primary flex justify-center items-center color-grey text-xl rounded-md">Название
-                            публикации</a>
-                        <div class="text-right color-grey">
-                            <a href="#!">Редактировать</a>
-                        </div>
-                    </li>
+                    @foreach ($stories as $story)
+                        <li class="max-w-md mb-10">
+                            <a href="#!"
+                                class="w-full border-2 h-14 border-primary flex justify-center items-center color-grey text-xl rounded-md">{{ $story->name }}</a>
+                            <div class="text-right color-grey">
+                                <a href="{{ route('EditStory', ['id' => $story->id]) }}">Редактировать</a>
+                            </div>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>

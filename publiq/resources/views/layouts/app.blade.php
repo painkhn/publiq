@@ -11,7 +11,7 @@
 
 <body>
     @include('components.header')
-    <main class="max-w-6xl w-full my-0 mx-auto mb-24">
+    <main>
         @yield('content')
     </main>
     @include('components.footer')

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="h-main">
-        <div class="px-28 text-center">
+        <div class="px-28 text-center py-20">
             <div class="title mb-10 text-2xl">
                 @if (count($stories) > 0)
                     <h2>Публикации на проверку</h2>

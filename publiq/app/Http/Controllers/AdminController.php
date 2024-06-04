@@ -24,6 +24,7 @@ class AdminController extends Controller
     public function solution($story_id, $status)
     {
         Story::where('id', $story_id)->update(['status' => $status]);
-        return view('verification', ['story' => Story::where('id', $story_id)->first()]);
+        return redirect(route('VerifList', ['stories' => Story::where('status', 'waiting')->get()]));
+        // return view('verification', ['story' => Story::where('id', $story_id)->first()]);
     }
 }

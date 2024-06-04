@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="max-w-lg h-auto mx-auto my-0 mb-20">
+    <div class="max-w-lg h-auto mx-auto my-0 mb-20 py-20">
         <div class="input mb-10">
             <input class="w-full h-14 border-2 border-primary px-4 color-grey text-lg" type="text" name=""
                 id="" value="{{ $story->name }}">

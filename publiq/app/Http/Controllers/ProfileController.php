@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\Story;
 use App\Models\User;
 
 class ProfileController extends Controller
@@ -84,5 +85,11 @@ class ProfileController extends Controller
         $user->save();
     
         return redirect()->back();
+    }
+
+    public function profile() 
+    {
+        $storise = Story::where('user_id', Auth::user()->id)->where('status', 'accepted')->orderBy('created_at', 'DESC')->get();
+        return view('profile', ['stories' => $storise]);
     }
 }
