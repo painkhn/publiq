@@ -12,7 +12,7 @@
                 <li><a href="{{ route('OpenNewStory') }}">Добавить публикацию</a></li>
                 <li><a class="ml-10" href="#!">Каталог</a></li>
                 @if (Auth::user() and Auth::user()->is_admin == 1)
-                    <li><a class="ml-10" href="{{ route('profile') }}">Админка</a></li>
+                    <li><a class="ml-10" href="{{ route('VerifList') }}">Админка</a></li>
                 @endif
                 @if (Auth::user())
                     <li><a class="ml-10" href="{{ route('profile') }}">Личный кабинет</a></li>
