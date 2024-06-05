@@ -26,7 +26,7 @@ class HomeController extends Controller
     }
     public function catalog()
     {
-        $story = Story::get();
+        $story = Story::where('status', 'accepted')->get();
         return view('catalog', ['populars' => $story]);    
     }
 }
