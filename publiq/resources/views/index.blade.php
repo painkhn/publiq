@@ -25,6 +25,10 @@
                                         </p>
                                     </div>
                                 </div>
+                                <div class="text-right">
+                                    <a class="color-light-grey text-xl"
+                                        href="{{ route('Story', ['id' => $popular->id]) }}">Читать</a>
+                                </div>
                             </div>
                         </li>
                     @endforeach

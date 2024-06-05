@@ -15,7 +15,7 @@ Route::post('/profile/edit', [ProfileController::class, 'edit_user'])->name('Edi
 
 Route::get('/story/new', [StoryController::class, 'open_new_story'])->name('OpenNewStory')->middleware(['auth']);
 Route::post('/story/new', [StoryController::class, 'new_story'])->name('NewStory')->middleware(['auth']);
-Route::get('/story/{id}', [StoryController::class, 'show_story'])->name('Story');
+Route::get('/story/{id}', [StoryController::class, 'show_story'])->name('Story')->middleware(['auth']);
 Route::get('/story/edit/{id}', [StoryController::class, 'editor_story'])->name('EditStory')->middleware(['auth']);
 Route::post('/story/edit/{id}', [StoryController::class, 'edit_story'])->name('EditStory')->middleware(['auth']);
 
