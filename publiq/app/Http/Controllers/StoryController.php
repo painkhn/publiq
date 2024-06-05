@@ -55,7 +55,8 @@ class StoryController extends Controller
             'name' => $request->name,
             'description' => $request->description,
         ]);
+        $story = Story::where('id', $id)->first();
 
-        return redirect()->back();
+        return view('story', ['story' => $story]);
     }
 }

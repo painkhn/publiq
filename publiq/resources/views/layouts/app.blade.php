@@ -11,7 +11,7 @@
 
 <body>
     @include('components.header')
-    <main>
+    <main class="h-main">
         @yield('content')
     </main>
     @include('components.footer')
