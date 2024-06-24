@@ -62,13 +62,15 @@ class ProfileController extends Controller
     }
 
     public function edit_user(Request $request) {
+        // Редактирование пользователя
         $request->validate([
+            // Валидация
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
             'password' => 'nullable|string|min:8',
         ]);
 
-        $user = User::find(Auth::user()->id);
+        $user = User::find(Auth::user()->id); // Получаем пользователя
     
         if ($request->has('name')) {
             $user->name = $request->name;
@@ -82,14 +84,15 @@ class ProfileController extends Controller
             $user->password = Hash::make($request->password);
         }
     
-        $user->save();
+        $user->save(); // Сохраняем введенные данные
     
-        return redirect()->back();
+        return redirect()->back(); // Перенаправляем назад
     }
 
     public function profile() 
+    // Открытие профиля
     {
-        $storise = Story::where('user_id', Auth::user()->id)->where('status', 'accepted')->orderBy('created_at', 'DESC')->get();
-        return view('profile', ['stories' => $storise]);
+        $storise = Story::where('user_id', Auth::user()->id)->where('status', 'accepted')->orderBy('created_at', 'DESC')->get(); // Получаем список историй этого пользователя
+        return view('profile', ['stories' => $storise]); // перенаправляем на профиль
     }
 }

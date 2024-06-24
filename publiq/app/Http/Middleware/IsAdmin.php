@@ -9,16 +9,12 @@ use Auth;
 
 class IsAdmin
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
     public function handle($request, Closure $next)
     {
-        if (Auth::user() and  Auth::user()->is_admin == 1) {
-            return $next($request);
+        // Проверка на админа
+        if (Auth::user() and  Auth::user()->is_admin == 1) { // Если пользователь зарегистрирован и is_admin = 1
+            return $next($request); // перенаправялем дальше
         }
-        return redirect()->back();
+        return redirect()->back(); // Либо перенаправляем назад
     }
 }
