@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Story;
 use App\Models\View;
+use App\Models\Category;
 use DB;
 
 class HomeController extends Controller
@@ -25,10 +26,11 @@ class HomeController extends Controller
 
         return view('index', ['stories' => $newStories, 'populars' => $popularStoriesData]); // Открываем главную страницу и передаем популярные истории и последние добавленные
     }
-    public function catalog()
+    // public function catalog()
     // Открываем каталог
-    {
-        $story = Story::where('status', 'accepted')->get(); //Получаем истории, которые принял администратор
-        return view('catalog', ['populars' => $story]); // Открываем страницу каталога и передаем информацию о историях  
-    }
+    // {
+    //     $categories = Category::all();
+    //     $story = Story::where('status', 'accepted')->get(); //Получаем истории, которые принял администратор
+    //     return view('catalog', ['populars' => $story, 'categories' => $categories]); // Открываем страницу каталога и передаем информацию о историях  
+    // }
 }

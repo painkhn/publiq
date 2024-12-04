@@ -24,11 +24,20 @@
                             <input class="w-full h-14 border-2 border-primary px-4 color-grey text-lg" type="text"
                                 name="password" id="password" placeholder="Пароль">
                         </div>
-                        <div class="submit text-center">
+                        <div class="submit text-center mb-5">
                             <input class="border-none rounded-lg text-lg color-grey" type="submit"
                                 value="Сохранить изменения">
                         </div>
+                        <!-- <div class="text-center border-none rounded-lg text-lg color-grey">
+                            <button type="submit">
+                                Выйти из аккаунта
+                            </button>
+                        </div> -->
                     </div>
+                </form>
+                <form action="{{ route('logout') }}" method="POST" class="text-center">
+                    @csrf
+                    <button type="submit" class="color-grey text-center text-lg">Выйти из аккаунта</button>
                 </form>
             </div>
             <div class="publications w-2/3 text-center pl-28">

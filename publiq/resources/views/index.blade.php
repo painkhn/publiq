@@ -19,9 +19,14 @@
                                     <div class="public-title text-xl mb-5">
                                         <h3>{{ $popular->name }}</h3>
                                     </div>
-                                    <div class="public-content">
+                                    <div class="public-content mb-5">
                                         <p class="text-ellipsis" id="my-p-element-{{ $popular }}">
                                             {{ $popular->description }}
+                                        </p>
+                                    </div>
+                                    <div class="public-content">
+                                        <p class="text-ellipsis" style="opacity: 60%;" id="my-p-element-{{ $popular }}">
+                                            {{ $popular->category->title }}
                                         </p>
                                     </div>
                                 </div>
@@ -47,9 +52,14 @@
                                     <div class="public-title text-xl mb-5">
                                         <h3>{{ $story->name }}</h3>
                                     </div>
-                                    <div class="public-content">
+                                    <div class="public-content mb-5">
                                         <p class="text-ellipsis" id="my-p-element-{{ $story }}">
                                             {{ $story->description }}
+                                        </p>
+                                    </div>
+                                    <div class="public-content">
+                                        <p class="text-ellipsis" style="opacity: 60%;" id="my-p-element-{{ $story }}">
+                                            {{ $story->category->title }}
                                         </p>
                                     </div>
                                 </div>
