@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Story;
 use App\Models\View;
 use App\Models\Category;
+use App\Models\Like;
+use App\Models\Comment;
 use Auth;
 
 class StoryController extends Controller
@@ -37,17 +39,28 @@ class StoryController extends Controller
         return redirect(route('Profile'));
     }
     public function show_story($id) 
-    // Открытие истории
     {
-        $story = Story::with('user')->with('category')->where('id', $id)->first(); // Получаем историю из бд по ее id
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+
+        $story = Story::with('user')->with('category')->with('likes')->with('comments.user')->where('id', $id)->first(); // Получаем историю из бд по ее id
         $views = View::where('user_id', Auth::user()->id)->where('story_id', $id)->first(); // Добавляем просмотр +1
+
         if (!$views) {
             View::create([
                 'user_id' => Auth::user()->id,
                 'story_id' => $id
             ]);
+            \Log::info('Просмотр добавлен для истории с ID: ' . $id);
+            $story->increment('views_count'); // Увеличиваем счетчик просмотров
+        } else {
+            \Log::info('Просмотр уже существует для истории с ID: ' . $id);
         }
-        return view('story', ['story' => $story]); // Открываем страницу истории и передаем данные о истории из бд
+
+        $userLiked = $story->likes->contains('user_id', Auth::user()->id);
+
+        return view('story', ['story' => $story, 'userLiked' => $userLiked]); // Открываем страницу истории и передаем данные о истории из бд
     }
     public function editor_story($id)
     // Редактирование истории
@@ -90,5 +103,41 @@ class StoryController extends Controller
         $populars = $populars->get();
 
         return view('catalog', compact('categories', 'populars'));
+    }
+
+    public function likeStory($id)
+    {
+        $story = Story::findOrFail($id);
+        $like = Like::where('user_id', Auth::user()->id)->where('story_id', $id)->first();
+
+        if ($like) {
+            // Удаляем лайк
+            $like->delete();
+            $story->decrement('likes_count');
+        } else {
+            // Добавляем лайк
+            Like::create([
+                'user_id' => Auth::user()->id,
+                'story_id' => $id,
+            ]);
+            $story->increment('likes_count');
+        }
+
+        return redirect()->back();
+    }
+
+    public function commentStory(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'content' => 'required',
+        ]);
+
+        Comment::create([
+            'user_id' => Auth::user()->id,
+            'story_id' => $id,
+            'content' => $request->content,
+        ]);
+
+        return redirect()->back();
     }
 }

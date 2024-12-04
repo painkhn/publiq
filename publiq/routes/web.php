@@ -21,6 +21,8 @@ Route::controller(StoryController::class)->group(function() {
     Route::get('/story/{id}', 'show_story')->name('Story')->middleware(['auth']);
     Route::get('/story/edit/{id}', 'editor_story')->name('EditStory')->middleware(['auth']);
     Route::post('/story/edit/{id}', 'edit_story')->name('EditStory')->middleware(['auth']);
+    Route::post('/stories/{id}/like', 'likeStory')->name('story.like');
+    Route::post('/stories/{id}/comment', 'commentStory')->name('story.comment');
 });
 
 Route::middleware(IsAdmin::class)->group(function() {
@@ -28,6 +30,7 @@ Route::middleware(IsAdmin::class)->group(function() {
         Route::get('/verification/list', 'verification_list')->name('VerifList')->middleware([IsAdmin::class]);
         Route::get('/verification/{story_id}/verify', 'verification_story')->name('VerifStory')->middleware([IsAdmin::class]);
         Route::get('/solution/{story_id}/{status}', 'solution')->name('Solution')->middleware([IsAdmin::class]);
+        Route::get('/admin/export-users', 'exportUsers')->name('admin.exportUsers');
     });
 });
 
