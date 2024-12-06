@@ -17,9 +17,9 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->string('name');
+            $table->string('name', 30);
             $table->text('description');
-            $table->string('status')->default('waiting');
+            $table->string('status', 15)->default('waiting');
             $table->timestamps();
         });
     }
