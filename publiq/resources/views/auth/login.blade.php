@@ -9,7 +9,7 @@
             <div class="title text-2xl text-center mb-10">
                 <h2>Вход</h2>
             </div>
-            <form method="POST" action="{{ route('login') }}" class="w-full">
+            <form method="POST" action="{{ route('login') }}" class="w-full mb-10">
                 @csrf
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -34,6 +34,12 @@
                     <input type="submit" class="max-w-52 w-full h-12 border-2 border-black rounded-lg text-2xl"
                         value="Войти">
                 </div>
+            </form>
+            <form method="GET" action="{{ route('yandex') }}">
+                @csrf
+                <button class="w-full h-12 border-2 border-black rounded-lg text-2xl">
+                    Вход по Яндекс ID
+                </button>
             </form>
         </div>
     </div>

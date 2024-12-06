@@ -8,6 +8,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Laravel\Socialite\Facades\Socialite;
+use Str;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -43,5 +45,23 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+    public function yandex()
+    {
+        return Socialite::driver('yandex')->redirect();
+    }
+
+    public function yandexRedirect()
+    {
+        $user = Socialite::driver('yandex')->user();
+        $user = User::firstOrCreate([
+            'email' => $user->email,
+            'name' => $user->name,
+            'password' => Hash::make(Str::random(24)),
+        ]);
+
+        Auth::login($uesr, true);
+        redirect()->route('index');
     }
 }

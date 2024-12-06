@@ -40,4 +40,5 @@ Route::controller(CategoryController::class)->group(function() {
 });
 
 
+
 require __DIR__.'/auth.php';
