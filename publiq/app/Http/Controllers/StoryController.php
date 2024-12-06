@@ -79,9 +79,10 @@ class StoryController extends Controller
             'name' => $request->name,
             'description' => $request->description,
         ]); // Обновляем данные 
-        $story = Story::where('id', $id)->first(); // Получаем историю из бд по ее id
+        $story = Story::with('category')->with('likes')->with('comments.user')->where('id', $id)->first(); // Получаем историю из бд по ее id
+        $userLiked = $story->likes->contains('user_id', Auth::user()->id);
 
-        return view('story', ['story' => $story]); // Открываем страницу истории и передаем данные о истории из бд
+        return view('story', ['story' => $story, 'userLiked' => $userLiked]); // Открываем страницу истории и передаем данные о истории из бд
     }
 
     public function index(Request $request)
