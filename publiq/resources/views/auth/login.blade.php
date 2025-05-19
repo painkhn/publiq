@@ -4,43 +4,40 @@
 @endsection
 
 @section('content')
-    <div class="w-full h-screen flex items-center justify-center">
-        <div class="border-2 rounded-md max-w-3xl w-full border-primary py-20 px-24">
-            <div class="title text-2xl text-center mb-10">
-                <h2>Вход</h2>
-            </div>
-            <form method="POST" action="{{ route('login') }}" class="w-full mb-10">
-                @csrf
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-                <div class="input">
-                    <input name="email" id="email"
-                        class="border-2 border-primary w-full rounded-md h-14 px-4 color-grey text-xl mb-10" type="email"
-                        placeholder="Электронная почта">
-                </div>
-                <div class="input">
-                    <input class="border-2 border-primary w-full rounded-md h-14 px-4 color-grey text-xl mb-10"
-                        name="password" id="password" type="password" placeholder="Пароль">
-                </div>
-                <div class="flex justify-between items-center">
-                    <a class="text-xl color-grey" href="{{ route('register') }}">Регистрация</a>
-                    <input type="submit" class="max-w-52 w-full h-12 border-2 border-black rounded-lg text-2xl"
-                        value="Войти">
-                </div>
-            </form>
-            <form method="GET" action="{{ route('yandex') }}">
-                @csrf
-                <button class="w-full h-12 border-2 border-black rounded-lg text-2xl">
-                    Вход по Яндекс ID
-                </button>
-            </form>
-        </div>
+    <div class="title text-2xl text-center">
+        <h2 class="font-semibold">Вход</h2>
     </div>
+    <form method="POST" action="{{ route('login') }}" class="w-full space-y-4 mb-4">
+        @csrf
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <div>
+            <label for="email" class="text-sm font-semibold">Электронная почта</label>
+            <input name="email" id="email"
+                class="border w-full rounded-md py-2 px-4 color-grey text-sm" type="email"
+                placeholder="Электронная почта">
+        </div>
+        <div>
+            <label for="password" class="text-sm font-semibold">Пароль</label>
+            <input class="border w-full rounded-md py-2 px-4 color-grey text-sm"
+                name="password" id="password" type="password" placeholder="Пароль">
+        </div>
+        <div class="text-right">
+            <a class="text-sm font-semibold transition-all hover:opacity-80" href="{{ route('register') }}">Регистрация</a>
+        </div>
+        <button type="submit" class="cursor-pointer w-full py-2 bg-[#ee4c7d] transition-all hover:bg-[#9b1750] text-white rounded-md font-semibold text-sm">Войти</button>
+    </form>
+    <form method="GET" action="{{ route('yandex') }}">
+        @csrf
+        <button class="w-full py-2 border border-black rounded-md text-sm font-semibold">
+            Вход по Яндекс ID
+        </button>
+    </form>
 @endsection

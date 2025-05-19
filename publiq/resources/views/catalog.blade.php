@@ -4,26 +4,33 @@
 @endsection
 
 @section('content')
-    <div class="h-main px-28 py-20">
-        <form action="{{ route('Catalog') }}" method="GET" class="mb-10">
-            <input type="text" name="query" placeholder="Поиск по названию" class="w-full h-14 border-2 border-primary px-4 color-grey text-lg mb-10" value="{{ request('query') }}">
-            <select name="category_id" class="w-full h-14 border-2 border-primary px-4 color-grey text-lg mb-10" onchange="this.form.submit()">
-                <option value="">Выберите категорию</option>
-                @foreach ($categories as $category)
-                    <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
-                        {{ $category->title }}
-                    </option>
-                @endforeach
-            </select>
-            <button type="submit" class="btn btn-primary">Поиск</button>
+    <div class="p-10">
+        <form action="{{ route('Catalog') }}" method="GET" class="mb-10 space-y-4 max-w-[640px] w-full">
+            <div>
+                <label for="query" class="text-sm font-semibold">Категория</label>
+                <input type="text" name="query" placeholder="Поиск по названию" class="w-full py-2 px-4 text-sm font-semibold placeholder:opacity-50 rounded-md" value="{{ request('query') }}">
+            </div>
+            <div>
+                <label for="category_id" class="text-sm font-semibold">Категория</label>
+                <select name="category_id" class="w-full py-2 px-4 text-sm font-semibold placeholder:opacity-50 rounded-md" onchange="this.form.submit()">
+                    <option value="">Выберите категорию</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
+                            {{ $category->title }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <button type="submit" class="w-full py-2 !bg-[#ee4c7d] transition-all hover:!bg-[#9b1750] font-semibold text-white rounded-md">Поиск</button>
+            <a href="{{ route('Catalog') }}" class="text-sm font-semibold text-center py-2 transition-all hover:bg-white rounded-md block">Сброс</a>
         </form>
 
         @if (count($populars) > 0)
-            <ul class="grid grid-adaptive">
+            <ul class="flex items-center gap-10">
                 @foreach ($populars as $popular)
-                    <li class="mb-5">
-                        <div class="max-w-lg">
-                            <div class="public-block w-full h-64 border-4 border-primary rounded-md text-center px-5 py-8 color-grey mb-2">
+                    <li class="max-w-[300px] w-full">
+                        <div class="w-full">
+                            <div class="public-block relative w-full h-64 bg-white border-primary rounded-md text-center p-5 color-grey">
                                 <div class="public-title text-xl mb-5">
                                     <h3>{{ $popular->name }}</h3>
                                 </div>
@@ -35,9 +42,7 @@
                                         {{ $popular->category->title }}
                                     </p>
                                 </div>
-                            </div>
-                            <div class="text-right">
-                                <a class="color-light-grey text-xl" href="{{ route('Story', ['id' => $popular->id]) }}">Читать</a>
+                                <a class="text-sm font-semibold absolute bottom-4 left-1/2 -translate-x-1/2 w-4/5 rounded-md text-white transition-all hover:bg-[#9b1750] py-2 bg-[#ee4c7d]" href="{{ route('Story', ['id' => $popular->id]) }}">Читать</a>
                             </div>
                         </div>
                     </li>

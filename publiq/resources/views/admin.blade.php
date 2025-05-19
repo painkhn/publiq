@@ -6,37 +6,36 @@
 @section('content')
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
     <div class="h-main">
-        <div class="px-28 text-center py-20">
-            <div class="title mb-10 text-2xl">
+        <div class="max-w-md mx-auto text-center mb-10">
+            <div class="title mb-10 text-xl font-semibold">
                 @if (count($stories) > 0)
                     <h2>Публикации на проверку</h2>
                 @else
                     <h2>Публикаций на проверку нет</h2>
                 @endif
             </div>
-            <ul class="grid grid-adaptive w-full h-auto mx-auto my-0 justify-items-center mb-10">
+            <ul class="grid grid-adaptive w-full h-auto mx-auto my-0 justify-items-center">
                 @foreach ($stories as $story)
-                    <li class="max-w-md w-full mb-10">
-                        <a href="{{ route('VerifStory', ['story_id' => $story->id]) }}"
-                            class="w-full border-2 h-14 border-primary flex justify-center items-center color-grey text-xl rounded-md">{{ $story->name }}</a>
-                        <div class="text-right color-grey">
+                    <li class="w-full mb-10">
+                        <a href="{{ route('VerifStory', ['story_id' => $story->id]) }}" class="w-full py-2 bg-white transition-all hover:scale-105 flex justify-center items-center color-grey text-xl rounded-md">{{ $story->name }}</a>
+                        <!-- <div class="text-right color-grey">
                             <a href="{{ route('VerifStory', ['story_id' => $story->id]) }}">Проверить</a>
-                        </div>
+                        </div> -->
                     </li>
                 @endforeach
             </ul>
-            <div class="w-full bg-black p-10">
-                <h2 class="text-gray-600 font-bold text-2xl mb-10">
+            <div class="w-full p-10 bg-white rounded-md">
+                <h2 class="font-semibold text-xl mb-4">
                     Добавить категорию
                 </h2>
-                <form action="{{ route('category.create') }}" method="POST" style="max-width: 30%; margin: 0 auto">
+                <form action="{{ route('category.create') }}" method="POST">
                     @csrf
-                    <input type="text" placeholder="Введите название категории" class="w-full border-2 border-primary px-4 h-14 mb-10" name="title">
-                    <input type="submit" value="Добавить">
+                    <input type="text" placeholder="Введите название категории" class="w-full rounded-md px-4 py-2 mb-4" name="title">
+                    <button type="submit" class="w-full py-2 !bg-[#ee4c7d] transition-all hover:!bg-[#9b1750] font-semibold text-white rounded-md">Добавить</button>
                 </form>
             </div>
         </div>
-        <div class="max-w-xl mx-auto my-0 mb-10">
+        <div class="max-w-xl mx-auto my-0">
             <div class="max-w-sm w-full mx-auto my-0 bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
                 <div class="flex justify-between">
                     <div>

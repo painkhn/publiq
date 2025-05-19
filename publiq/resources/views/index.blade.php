@@ -4,18 +4,17 @@
 @endsection
 
 @section('content')
-    <div class="px-28 py-20">
+    <div class="p-10">
         @if (count($stories) > 0)
-            <div class="public w-full mb-20">
+            <div class="public w-full mb-10">
                 <div class="title text-2xl mb-8">
-                    <h2>Самые просматриваемые публикацию</h2>
+                    <h2 class="text-2xl font-semibold mb-4">Самые просматриваемые публикацию</h2>
                 </div>
-                <ul class="grid grid-adaptive">
+                <ul class="flex items-center gap-10">
                     @foreach ($populars->reverse() as $popular)
-                        <li>
-                            <div class="max-w-lg">
-                                <div
-                                    class="public-block w-full h-64 border-4 border-primary rounded-md text-center px-5 py-8 color-grey mb-2">
+                        <li class="max-w-[300px] w-full">
+                            <div class="w-full">
+                                <div class="public-block relative w-full h-64 bg-white border-primary rounded-md text-center p-5 color-grey">
                                     <div class="public-title text-xl mb-5">
                                         <h3>{{ $popular->name }}</h3>
                                     </div>
@@ -29,9 +28,7 @@
                                             {{ $popular->category->title }}
                                         </p>
                                     </div>
-                                </div>
-                                <div class="text-right">
-                                    <a class="color-light-grey text-xl"
+                                    <a class="text-sm font-semibold absolute bottom-4 left-1/2 -translate-x-1/2 w-4/5 rounded-md text-white transition-all hover:bg-[#9b1750] py-2 bg-[#ee4c7d]"
                                         href="{{ route('Story', ['id' => $popular->id]) }}">Читать</a>
                                 </div>
                             </div>
@@ -39,16 +36,14 @@
                     @endforeach
                 </ul>
             </div>
-            <div class="public w-full mb-20">
-                <div class="title text-2xl mb-8">
-                    <h2>Новые публикации</h2>
-                </div>
-                <ul class="grid grid-adaptive">
+            <div class="public w-full mb-10">
+                <h2 class="text-2xl font-semibold mb-4">Новые публикации</h2>
+                <ul class="flex items-center gap-10">
                     @foreach ($stories as $index => $story)
-                        <li>
-                            <div class="max-w-lg">
+                        <li class="max-w-[300px] w-full">
+                            <div class="w-full">
                                 <div
-                                    class="public-block w-full h-64 border-4 border-primary rounded-md text-center px-5 py-8 color-grey mb-2">
+                                    class="public-block relative w-full h-64 bg-white border-primary rounded-md text-center p-5 color-grey">
                                     <div class="public-title text-xl mb-5">
                                         <h3>{{ $story->name }}</h3>
                                     </div>
@@ -62,10 +57,11 @@
                                             {{ $story->category->title }}
                                         </p>
                                     </div>
+                                    <a class="text-sm font-semibold absolute bottom-4 left-1/2 -translate-x-1/2 w-4/5 rounded-md text-white transition-all hover:bg-[#9b1750] py-2 bg-[#ee4c7d]"
+                                        href="{{ route('Story', ['id' => $story->id]) }}">Читать</a>
                                 </div>
                                 <div class="text-right">
-                                    <a class="color-light-grey text-xl"
-                                        href="{{ route('Story', ['id' => $story->id]) }}">Читать</a>
+                                    
                                 </div>
                             </div>
                         </li>
@@ -73,7 +69,7 @@
                 </ul>
             </div>
         @else
-            <h1 class="title text-2xl">Историй нет</h1>
+            <h1 class="title text-2xl font-semibold">Историй нет :(</h1>
         @endif
     </div>
     <script>

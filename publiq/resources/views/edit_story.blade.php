@@ -4,21 +4,23 @@
 @endsection
 
 @section('content')
-    <form method="POST" action="{{ route('EditStory', ['id' => $story->id]) }}">
-        @csrf
-        <div class="max-w-lg h-auto mx-auto my-0 mb-20 py-20">
-            <div class="input mb-10">
-                <input class="w-full h-14 border-2 border-primary px-4 color-grey text-lg" type="text" name="name"
-                    id="name" placeholder="Название публикации" value="{{ $story->name }}">
+    <div class="bg-white rounded-md max-w-lg mx-auto p-5 pb-10">
+        <h1 class="text-center font-semibold text-2xl mb-8">Редактирование публикации</h1>
+        <form method="POST" action="{{ route('EditStory', ['id' => $story->id]) }}">
+            @csrf
+            <div class="h-auto my-0 space-y-4">
+                <div class="input">
+                    <label for="name" class="text-sm font-semibold">Название публикации</label>
+                    <input class="w-full py-2 px-4 text-sm font-semibold placeholder:opacity-50 rounded-md" type="text" name="name"
+                        id="name" placeholder="Название публикации" value="{{ $story->name }}">
+                </div>
+                <div class="textarea">
+                    <label for="description" class="text-sm font-semibold">Текст публикации</la>
+                    <textarea class="w-full py-2 min-h-40 px-4 text-sm font-semibold placeholder:opacity-50 rounded-md" name="description" id="description"
+                        placeholder="Текст публикации">{{ $story->description }}</textarea>
+                </div>
+                <button type="submit" class="w-full py-2 !bg-[#ee4c7d] transition-all hover:!bg-[#9b1750] font-semibold text-white rounded-md">Сохранить</button>
             </div>
-            <div class="textarea mb-10">
-                <textarea class="w-full h-96 border-2 border-primary px-4 color-grey text-lg pt-2" name="description" id="description"
-                    placeholder="Текст публикации">{{ $story->description }}</textarea>
-            </div>
-            <div class="submit text-center">
-                <input class="max-w-52 w-full h-12 border-2 border-primary rounded-lg text-lg" type="submit"
-                    value="Сохранить">
-            </div>
-        </div>
-    </form>
+        </form>
+    </div>
 @endsection

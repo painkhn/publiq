@@ -6,26 +6,28 @@
 @section('content')
     <form method="POST" action="{{ route('NewStory') }}">
         @csrf
-        <div class="max-w-lg h-auto mx-auto my-0 mb-20 py-20">
-            <div class="input mb-10">
-                <input class="w-full h-14 border-2 border-primary px-4 color-grey text-lg" type="text" name="name"
+        <div class="max-w-lg h-auto bg-white/80 rounded-md mx-auto my-0 p-5 space-y-4">
+            <h1 class="text-center font-semibold">Добавить публикацию</h1>
+            <div class="input">
+                <label for="name" class="text-sm font-semibold">Название публикации</label>
+                <input class="w-full py-2 px-4 text-sm font-semibold placeholder:opacity-50 rounded-md" type="text" name="name"
                     id="name" placeholder="Название публикации">
             </div>
-            <select name="category_id" class="w-full h-14 border-2 border-primary px-4 color-grey text-lg mb-10">
-                <option selected>Выберите категорию</option>
-
-                @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->title }}</option>
-                @endforeach
-            </select>
-            <div class="textarea mb-10">
-                <textarea class="w-full h-96 border-2 border-primary px-4 color-grey text-lg pt-2" name="description" id="description"
+            <div>
+                <label for="category_id" class="text-sm font-semibold">Категория</label>
+                <select name="category_id" class="w-full py-2 px-4 text-sm font-semibold placeholder:opacity-50 rounded-md">
+                    <option selected>Выберите категорию</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->title }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="textarea">
+                <label for="category_id" class="text-sm font-semibold">Текст публикации</label>
+                <textarea class="w-full py-2 min-h-40 px-4 text-sm font-semibold placeholder:opacity-50 rounded-md" name="description" id="description"
                     placeholder="Текст публикации"></textarea>
             </div>
-            <div class="submit text-center">
-                <input class="max-w-52 w-full h-12 border-2 border-primary rounded-lg text-lg" type="submit"
-                    value="Опубликовать">
-            </div>
+            <button type="submit" class="w-full py-2 !bg-[#ee4c7d] transition-all hover:!bg-[#9b1750] font-semibold text-white rounded-md">Опубликовать</button>
         </div>
     </form>
 @endsection

@@ -1,5 +1,5 @@
 <footer>
-    <div class="w-full bg-primary h-36 flex justify-center items-center text-2xl">
-        <p><b>Copyright 2024©</b> Публикация Историй</p>
+    <div class="w-full bg-primary h-20 flex justify-center items-center">
+        <p class="font-semibold opacity-80">Copyright 2024© Публикация Историй</p>
     </div>
 </footer>
