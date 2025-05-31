@@ -14,22 +14,26 @@
                     @foreach ($populars->reverse() as $popular)
                         <li class="max-w-[300px] w-full">
                             <div class="w-full">
-                                <div class="public-block relative w-full h-64 bg-white border-primary rounded-md text-center p-5 color-grey">
-                                    <div class="public-title text-xl mb-5">
+                                <div
+                                    class="public-block relative w-full h-64 bg-white border-primary rounded-md text-center p-5 color-grey">
+                                    <div class="public-title text-xl line-clamp-1 mb-5">
                                         <h3>{{ $popular->name }}</h3>
                                     </div>
                                     <div class="public-content mb-5">
-                                        <p class="text-ellipsis" id="my-p-element-{{ $popular }}">
+                                        <p class="text-ellipsis line-clamp-3">
                                             {{ $popular->description }}
                                         </p>
                                     </div>
                                     <div class="public-content">
-                                        <p class="text-ellipsis" style="opacity: 60%;" id="my-p-element-{{ $popular }}">
+                                        <p class="text-ellipsis" style="opacity: 60%;">
                                             {{ $popular->category->title }}
                                         </p>
                                     </div>
                                     <a class="text-sm font-semibold absolute bottom-4 left-1/2 -translate-x-1/2 w-4/5 rounded-md text-white transition-all hover:bg-[#9b1750] py-2 bg-[#ee4c7d]"
                                         href="{{ route('Story', ['id' => $popular->id]) }}">Читать</a>
+                                </div>
+                                <div class="text-right">
+                                    
                                 </div>
                             </div>
                         </li>
@@ -44,11 +48,11 @@
                             <div class="w-full">
                                 <div
                                     class="public-block relative w-full h-64 bg-white border-primary rounded-md text-center p-5 color-grey">
-                                    <div class="public-title text-xl mb-5">
+                                    <div class="public-title text-xl line-clamp-1 mb-5">
                                         <h3>{{ $story->name }}</h3>
                                     </div>
                                     <div class="public-content mb-5">
-                                        <p class="text-ellipsis" id="my-p-element-{{ $story }}">
+                                        <p class="text-ellipsis line-clamp-3">
                                             {{ $story->description }}
                                         </p>
                                     </div>
@@ -72,7 +76,7 @@
             <h1 class="title text-2xl font-semibold">Историй нет :(</h1>
         @endif
     </div>
-    <script>
+    <!-- <script>
         const pElements = document.querySelectorAll('p[id^="my-p-element-"]');
         pElements.forEach((pElement) => {
             const text = pElement.textContent;
@@ -80,5 +84,5 @@
                 pElement.textContent = text.slice(0, 227) + '...';
             }
         });
-    </script>
+    </script> -->
 @endsection

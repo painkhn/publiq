@@ -26,19 +26,19 @@
         </form>
 
         @if (count($populars) > 0)
-            <ul class="flex items-center gap-10">
+            <ul class="flex items-center flex-wrap gap-10">
                 @foreach ($populars as $popular)
                     <li class="max-w-[300px] w-full">
                         <div class="w-full">
                             <div class="public-block relative w-full h-64 bg-white border-primary rounded-md text-center p-5 color-grey">
-                                <div class="public-title text-xl mb-5">
+                                <div class="public-title text-xl line-clamp-1 mb-5">
                                     <h3>{{ $popular->name }}</h3>
                                 </div>
                                 <div class="public-content mb-5">
-                                    <p class="text-ellipsis" id="my-p-element-{{ $popular }}">{{ $popular->description }}</p>
+                                    <p class="text-ellipsis line-clamp-3">{{ $popular->description }}</p>
                                 </div>
                                 <div class="public-content">
-                                    <p class="text-ellipsis" style="opacity: 60%;" id="my-p-element-{{ $popular }}">
+                                    <p class="text-ellipsis" style="opacity: 60%;">
                                         {{ $popular->category->title }}
                                     </p>
                                 </div>
@@ -52,13 +52,4 @@
             <h1 class="title text-2xl">Историй нет</h1>
         @endif
     </div>
-    <script>
-        const pElements = document.querySelectorAll('p[id^="my-p-element-"]');
-        pElements.forEach((pElement) => {
-            const text = pElement.textContent;
-            if (text.length > 227) {
-                pElement.textContent = text.slice(0, 227) + '...';
-            }
-        });
-    </script>
 @endsection
