@@ -48,16 +48,16 @@
                             <div class="w-full">
                                 <div
                                     class="public-block relative w-full h-64 bg-white border-primary rounded-md text-center p-5 color-grey">
-                                    <div class="public-title text-xl mb-5">
+                                    <div class="public-title text-xl line-clamp-1 mb-5">
                                         <h3>{{ $story->name }}</h3>
                                     </div>
                                     <div class="public-content mb-5">
-                                        <p class="text-ellipsis" id="my-p-element-{{ $story }}">
+                                        <p class="text-ellipsis line-clamp-3">
                                             {{ $story->description }}
                                         </p>
                                     </div>
                                     <div class="public-content">
-                                        <p class="text-ellipsis" style="opacity: 60%;" id="my-p-element-{{ $story }}">
+                                        <p class="text-ellipsis line-clamp-1" style="opacity: 60%;">
                                             {{ $story->category->title }}
                                         </p>
                                     </div>
